@@ -994,6 +994,9 @@ noPollConn * __nopoll_conn_new_common (noPollCtx       * ctx,
 			return conn;
 		} /* end if */
 		
+		/*Set SNI (Server Name Indication) Hostname */
+		SSL_set_tlsext_host_name(conn->ssl, conn->host);
+
 		/* set socket */
 		SSL_set_fd (conn->ssl, conn->session);
 
